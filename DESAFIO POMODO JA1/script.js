@@ -7,11 +7,11 @@ const secondsDisplay = document.querySelector('.seconds');
 let timerTimeOut;
 
 function countdonw() {
+  secondsDisplay.textContent = '00';
+
   timerTimeOut = setTimeout(function () {
     let seconds = Number(secondsDisplay.textContent);
     let minutes = Number(minutesDisplay.textContent);
-
-    secondsDisplay.textContent = '00';
 
     if (seconds <= 0) {
       seconds = 2;
