@@ -58,6 +58,15 @@ button {
   padding: 10px;
 }
 
+.active {
+  fill: #02799D;
+}
+
+.iconActive {
+  fill: white;
+}
+
+
 
 
 
