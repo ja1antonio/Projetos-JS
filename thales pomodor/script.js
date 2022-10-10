@@ -1,6 +1,5 @@
-import { sounds } from './sounds.js';
-
 const buttonPlay = document.querySelector('.play');
+const btnPlayPath = document.querySelector('#playTime');
 const buttonStop = document.querySelector('.stop');
 const ButtonAddTimer = document.querySelector('.adiciona');
 const buttonDiminuiTimer = document.querySelector('.diminui');
@@ -9,7 +8,7 @@ const secondsDisplay = document.querySelector('.seconds');
 let timerTimeOut;
 
 function countdonw() {
-  timerTimeOut = setTimeout(function () {
+  timerTimeOut = setInterval(function () {
     let seconds = Number(secondsDisplay.textContent);
     let minutes = Number(minutesDisplay.textContent);
 
@@ -17,20 +16,24 @@ function countdonw() {
 
     if (seconds <= 0) {
       seconds = 60;
-
       minutesDisplay.textContent = String(minutes - 1).padStart(2, '0');
     }
     secondsDisplay.textContent = String(seconds - 1).padStart(2, '0');
 
-    if (minutes <= 0) {
-      return;
+    if (
+      Number(minutesDisplay.textContent) === 0 &&
+      Number(secondsDisplay.textContent) === 0
+    ) {
+      clearInterval(timerTimeOut);
+      btnPlayPath.classList.remove('playActive');
+      console.log('h');
     }
-
-    countdonw();
   }, 1000);
 }
 
 buttonPlay.addEventListener('click', function () {
+  clearInterval(timerTimeOut);
+  btnPlayPath.classList.add('playActive');
   if (
     Number(minutesDisplay.textContent) === 0 &&
     Number(secondsDisplay.textContent) === 0
@@ -57,6 +60,8 @@ buttonDiminuiTimer.addEventListener('click', function () {
   } else {
     minutesDisplay.textContent = '00';
     secondsDisplay.textContent = '00';
+    btnPlayPath.classList.remove('playActive');
+    clearInterval(timerTimeOut);
   }
 
   if (Number(minutesDisplay.textContent) < 10) {
@@ -67,8 +72,8 @@ buttonDiminuiTimer.addEventListener('click', function () {
 });
 
 buttonStop.addEventListener('click', function () {
+  btnPlayPath.classList.remove('playActive');
   clearTimeout(timerTimeOut);
-  sounds.soundFirePlace.pause();
 });
 
 // Botões de controle de música
@@ -82,10 +87,12 @@ btnFlorest.addEventListener('click', () => {
   ) {
     btnFlorest.classList.remove('active');
     iconFlorest.classList.remove('iconActive');
+    document.querySelector('#soundFlorest').pause();
   } else {
     btnFlorest.classList.add('active');
     iconFlorest.classList.add('iconActive');
-    sounds().pressForest();
+    document.querySelector('#soundFlorest').play();
+    document.querySelector('#soundFlorest').loop = true;
   }
 });
 
@@ -98,12 +105,13 @@ btnCoffe.addEventListener('click', () => {
   ) {
     btnCoffe.classList.remove('active');
     iconCoffe.classList.remove('iconActive');
+    document.querySelector('#soundCoffe').pause();
   } else {
     btnCoffe.classList.add('active');
     iconCoffe.classList.add('iconActive');
+    document.querySelector('#soundCoffe').play();
+    document.querySelector('#soundCoffe').loop = true;
   }
-
-  sounds().pressCoffe();
 });
 
 let btnRain = document.querySelector('#rainBackground');
@@ -115,12 +123,13 @@ btnRain.addEventListener('click', () => {
   ) {
     btnRain.classList.remove('active');
     iconRain.classList.remove('iconActive');
+    document.querySelector('#soundRain').pause();
   } else {
     btnRain.classList.add('active');
     iconRain.classList.add('iconActive');
+    document.querySelector('#soundRain').play();
+    document.querySelector('#soundRain').loop = true;
   }
-
-  sounds().pressRain();
 });
 
 let btnFire = document.querySelector('#fireBackground');
@@ -132,45 +141,11 @@ btnFire.addEventListener('click', () => {
   ) {
     btnFire.classList.remove('active');
     iconFire.classList.remove('iconActive');
+    document.querySelector('#soundFire').pause();
   } else {
     btnFire.classList.add('active');
     iconFire.classList.add('iconActive');
+    document.querySelector('#soundFire').play();
+    document.querySelector('#soundFire').loop = true;
   }
-
-  sounds().pressFire();
-  sounds().pressFireStop();
 });
-
-const buttonSol = document.querySelector('.Sol');
-const buttonLua = document.querySelector('.Lua');
-const page = document.querySelector('.page');
-const path = document.querySelector('.btnControl');
-const bgDarkMode = document.querySelector('.bg-button-darkmode');
-const iconDarkMode = document.querySelector('.icon-darkmode');
-
-buttonSol.addEventListener('click', function () {
-  darkmodeOn();
-});
-
-buttonLua.addEventListener('click', function () {
-  darkmodeOff();
-});
-
-function darkmodeOn() {
-  buttonSol.classList.add('hide');
-  buttonLua.classList.remove('hide');
-
-  if (!page.classList.contains('pageDark')) {
-    page.classList.add('pageDark');
-    path.classList.add('btnControlDark');
-  }
-}
-
-function darkmodeOff() {
-  buttonSol.classList.remove('hide');
-  buttonLua.classList.add('hide');
-
-  if (page.classList.contains('pageDark')) {
-    page.classList.remove('pageDark');
-  }
-}

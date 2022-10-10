@@ -58,12 +58,25 @@ button {
   padding: 10px;
 }
 
+.controlColor:hover {
+  background-color: #eeeeee;
+  border-radius: 50px;
+}
+
+.controlSound:hover {
+  opacity: 0.8;
+}
+
 .active {
   fill: #02799d;
 }
 
 .iconActive {
   fill: white;
+}
+
+.playActive {
+  fill: green;
 }
 
 @media only screen and (max-width: 920px) {
@@ -100,34 +113,4 @@ button {
     width: 120px;
     height: 120px;
   }
-}
-
-/*DARK MODE*/
-.pageDark {
-  background-color: black;
-  width: 100%;
-  color: white;
-}
-
-.btnControlDark {
-  fill: white;
-}
-
-.bg-button-darkmode {
-  fill: blue;
-}
-.icon-darkmode {
-  fill: red;
-}
-
-.hide {
-  display: none;
-}
-
-.darkMode {
-  position: absolute;
-  left: 92.19%;
-  right: 5%;
-  top: 8.89%;
-  bottom: 86.11%;
 }
