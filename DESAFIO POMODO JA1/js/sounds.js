@@ -17,30 +17,10 @@ export function sounds() {
   soundRain.loop;
   soundForest.loop;
 
-  function pressForest() {
-    soundForest.play();
-  }
-  function pressRain() {
-    soundRain.play();
-  }
-
-  function pressCoffe() {
-    soundCoffeshop.play();
-  }
-
-  function pressFire() {
-    soundFirePlace.play();
-  }
-  function pressFireStop() {
-    soundFirePlace.pause();
-  }
-
   return {
-    pressForest,
-    pressRain,
-    pressCoffe,
-    pressFire,
-    pressFireStop,
+    soundCoffeshop,
     soundFirePlace,
+    soundForest,
+    soundRain,
   };
 }

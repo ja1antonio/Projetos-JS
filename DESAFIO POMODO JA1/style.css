@@ -58,14 +58,13 @@ button {
   padding: 10px;
 }
 
-.active {
-  fill: #02799d;
+.darkMode {
+  position: absolute;
+  left: 92.19%;
+  right: 5%;
+  top: 8.89%;
+  bottom: 86.11%;
 }
-
-.iconActive {
-  fill: white;
-}
-
 @media only screen and (max-width: 920px) {
   .page {
     display: flex;
@@ -79,6 +78,15 @@ button {
   .sound {
     width: 120px;
     height: 120px;
+  }
+
+  .darkMode {
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -100,6 +108,15 @@ button {
     width: 120px;
     height: 120px;
   }
+
+  .darkMode {
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /*DARK MODE*/
@@ -113,21 +130,30 @@ button {
   fill: white;
 }
 
-.bg-button-darkmode {
-  fill: blue;
+.bg-button.darkmode {
+  fill: #29292e;
 }
-.icon-darkmode {
-  fill: red;
+
+.colorControl.darkmode {
+  fill: #ffffff;
+}
+
+.icon.darkmode {
+  fill: #ffffff;
 }
 
 .hide {
   display: none;
 }
 
-.darkMode {
-  position: absolute;
-  left: 92.19%;
-  right: 5%;
-  top: 8.89%;
-  bottom: 86.11%;
+.bg-button.active {
+  fill: #02799d;
+}
+
+.bg-button.active.darkmode {
+  fill: #0a3442;
+}
+
+.iconActive {
+  fill: white;
 }
